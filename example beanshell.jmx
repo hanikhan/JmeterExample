@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11 r1554548">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="TP: " enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers"/>
+      </HeaderManager>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="varTimerConstant" elementType="Argument">
+            <stringProp name="Argument.name">varTimerConstant</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="varTimerRandom" elementType="Argument">
+            <stringProp name="Argument.name">varTimerRandom</stringProp>
+            <stringProp name="Argument.value">5000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="varRandomString" elementType="Argument">
+            <stringProp name="Argument.name">varRandomString</stringProp>
+            <stringProp name="Argument.value">${__RandomString(20,qwertyuiopasdfghjkl)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="varTime" elementType="Argument">
+            <stringProp name="Argument.name">varTime</stringProp>
+            <stringProp name="Argument.value">${__time(dd.MM.yyyy HH:mm:ss)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="varRandomThreadNum" elementType="Argument">
+            <stringProp name="Argument.name">varRandomThreadNum</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Oracle" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery">Select 1</stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="dataSource">ORCL</stringProp>
+        <stringProp name="dbUrl">jdbc:oracle:thin:@192.168.150.209:1521:ORCL</stringProp>
+        <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">testpass</stringProp>
+        <stringProp name="poolMax">0</stringProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">pflb</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>false</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>false</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>true</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <hostname>true</hostname>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG Work" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1408084658000</longProp>
+        <longProp name="ThreadGroup.end_time">1408084658000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="TA: Throuput" enabled="false">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">0</stringProp>
+        </TestAction>
+        <hashTree>
+          <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="CTT" enabled="true">
+            <intProp name="calcMode">0</intProp>
+            <doubleProp>
+              <name>throughput</name>
+              <value>3.0</value>
+              <savedValue>0.0</savedValue>
+            </doubleProp>
+          </ConstantThroughputTimer>
+          <hashTree/>
+        </hashTree>
+        <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="RC: insert, select, update" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+        </RandomController>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: select" enabled="true">
+            <stringProp name="dataSource">ORCL</stringProp>
+            <stringProp name="query">SELECT id, data FROM testtask3
+--WHERE THREAD=${__threadNum} - 1 AND iteration_thread = ${__threadNum} - 1
+WHERE THREAD=2 - 1 AND iteration_thread = 2 - 1</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Prepared Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">id, data</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+File fOut = new File(&quot;fileOutFull.txt&quot;);
+FileWriter  pw 	= new FileWriter(fOut);
+//vars.put(&quot;idResponse&quot;, id);
+if((id % 3) == 0 )	{
+	byte [] samplerdata = ctx.getPreviousResult().getResponseData();
+     String samplerdatastring = new String(samplerdata);
+	pw.write(samplerdatastring);
+	vars.put(&quot;samplerdataPre&quot;,samplerdatastring)  ;          
+	pw.close();
+} 	else	{
+	System.out.println(&quot;line&quot;);
+	pw.close();
+	
+}</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: insert" enabled="false">
+            <stringProp name="dataSource">ORCL</stringProp>
+            <stringProp name="query">INSERT INTO TESTTASK3 
+(DATA, RANDOM_STRING, THREAD, ITERATION_THREAD)
+VALUES
+(&apos;${__time(dd.MM.yyyy)}&apos;, &apos;${varRandomString}&apos;, ${__threadNum()}, ${CurThr})
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: update" enabled="false">
+            <stringProp name="dataSource">ORCL</stringProp>
+            <stringProp name="query">UPDATE TESTTASK3
+SET DATA=&apos;${__time(dd.MM.yyyy)}&apos;,RANDOM_STRING=&apos;${varRandomString}&apos;,THREAD=${varRandomThreadNum},ITERATION_THREAD=${CurThr}
+
+</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Prepared Update Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="RV: random thread num" enabled="true">
+              <stringProp name="maximumValue">${__threadNum}</stringProp>
+              <stringProp name="minimumValue">1</stringProp>
+              <stringProp name="outputFormat"></stringProp>
+              <boolProp name="perThread">true</boolProp>
+              <stringProp name="randomSeed"></stringProp>
+              <stringProp name="variableName">varRandomThreadNum</stringProp>
+            </RandomVariableConfig>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="false">
+          <stringProp name="BeanShellSampler.query">FileOutputStream fout;		
+try
+{
+fout = new FileOutputStream(&quot;myfile.txt&quot;);
+//new PrintStream(fout).println (&quot;hello world!&quot;);
+SampleResult.setDataType( org.apache.jmeter.samplers.SampleResult.TEXT );
+fin.close();	
+}
+catch (IOException e)
+{
+			System.err.println (&quot;Unable to write to file&quot;);
+			System.exit(-1);
+		}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG temp" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1408084658000</longProp>
+        <longProp name="ThreadGroup.end_time">1408084658000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: select Post" enabled="false">
+          <stringProp name="dataSource">ORCL</stringProp>
+          <stringProp name="query">SELECT id, data FROM testtask3
+--WHERE THREAD=${__threadNum} - 1 AND iteration_thread = ${__threadNum} - 1
+WHERE THREAD= 2 - 1 AND iteration_thread = 2 - 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Prepared Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">id, data</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor jmeter var" enabled="false">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">String data = new String(&quot;qweqwe&quot;);
+vars.put(&quot;data&quot;,data);
+          </stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor File" enabled="false">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">File fOut = new File(&quot;fileOutPost.txt&quot;);
+FileWriter  pw = new FileWriter(fOut);
+pw.write(&quot;line&quot;);
+pw.close();</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor If" enabled="false">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+//id = vars.get(&quot;id_#&quot;);
+if((id % 3) == 0 )	{
+	String resultPost = new String(&quot;data == 0&quot;);
+	vars.put(&quot;resultPost&quot;, resultPost);
+          	
+} 	else	{
+		String resultPost = new String(&quot;data != 0&quot;);
+	vars.put(&quot;resultPost&quot;, resultPost);
+	
+}
+          </stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">byte [] samplerdataPost = ctx.getPreviousResult().getResponseData();
+String samplerdatastringPost = new String(samplerdataPost);
+vars.put(&quot;samplerdataPost&quot;,samplerdatastringPost);
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: select PostFull" enabled="true">
+          <stringProp name="dataSource">ORCL</stringProp>
+          <stringProp name="query">SELECT id, data FROM testtask3
+--WHERE THREAD=${__threadNum} - 1 AND iteration_thread = ${__threadNum} - 1
+WHERE THREAD= 2 - 1 AND iteration_thread = 2 - 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Prepared Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">id, data</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+File fOut = new File(&quot;fileOutFull.txt&quot;);
+FileWriter  pw 	= new FileWriter(fOut);
+//vars.put(&quot;idResponse&quot;, id);
+if((id % 3) == 0 )	{
+	byte [] samplerdata = ctx.getPreviousResult().getResponseData();
+     String samplerdatastring = new String(samplerdata);
+	pw.write(samplerdatastring);
+	vars.put(&quot;samplerdataPre&quot;,samplerdatastring)  ;          
+	pw.close();
+} 	else	{
+	System.out.println(&quot;line&quot;);
+	pw.close();
+	
+}</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: select PRE" enabled="false">
+          <stringProp name="dataSource">ORCL</stringProp>
+          <stringProp name="query">SELECT id, data FROM testtask3
+--WHERE THREAD=${__threadNum} - 1 AND iteration_thread = ${__threadNum} - 1
+WHERE THREAD= 2 - 1 AND iteration_thread = 2 - 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Prepared Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">id, data</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor jmeter variables" enabled="false">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">String data = new String(&quot;qweqwe&quot;);
+vars.put(&quot;data&quot;,data);
+          </stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor File" enabled="false">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">File fOut = new File(&quot;fileOutPre.txt&quot;);
+FileWriter  pw = new FileWriter(fOut);
+pw.write(&quot;line&quot;);
+pw.close();</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor if " enabled="false">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+//id = vars.get(&quot;id_#&quot;);
+if((id % 3) == 0 )	{
+	String resultPre = new String(&quot;data == 0&quot;);
+	vars.put(&quot;resultPre&quot;, resultPre);
+          	
+} 	else	{
+		String resultPre = new String(&quot;data != 0&quot;);
+	vars.put(&quot;resultPre&quot;, resultPre);
+	
+}
+          </stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">    byte [] samplerdataPre = ctx.getPreviousResult().getResponseData();
+                String samplerdatastringPre = new String(samplerdataPre);
+                vars.put(&quot;samplerdataPre&quot;,samplerdatastringPre);
+</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBCR: select full" enabled="false">
+          <stringProp name="dataSource">ORCL</stringProp>
+          <stringProp name="query">SELECT id, data FROM testtask3
+--WHERE THREAD=${__threadNum} - 1 AND iteration_thread = ${__threadNum} - 1
+WHERE THREAD= 2 - 1 AND iteration_thread = 2 - 1</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Prepared Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">id, data</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor Full" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+File fOut = new File(&quot;fileOutFull.txt&quot;);
+FileWriter  pw 	= new FileWriter(fOut);
+vars.put(&quot;idResponse&quot;, id);
+if((id % 3) == 0 )	{
+	byte [] samplerdata = ctx.getPreviousResult().getResponseData();
+     String samplerdatastring = new String(samplerdata);
+	pw.write(samplerdatastring);
+	vars.put(&quot;samplerdataPre&quot;,samplerdatastring)  ;          
+	pw.close();
+} 	else	{
+	System.out.println(&quot;line&quot;);
+	pw.close();
+	
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor File" enabled="false">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">File fOut = new File(&quot;fileOutPre.txt&quot;);
+FileWriter  pw = new FileWriter(fOut);
+pw.write(&quot;line&quot;);
+pw.close();</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor if " enabled="false">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+//id = vars.get(&quot;id_#&quot;);
+if((id % 3) == 0 )	{
+	String resultPre = new String(&quot;data == 0&quot;);
+	vars.put(&quot;resultPre&quot;, resultPre);
+          	
+} 	else	{
+		String resultPre = new String(&quot;data != 0&quot;);
+	vars.put(&quot;resultPre&quot;, resultPre);
+	
+}
+          </stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="false">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">    byte [] samplerdataPre = ctx.getPreviousResult().getResponseData();
+                String samplerdatastringPre = new String(samplerdataPre);
+                vars.put(&quot;samplerdataPre&quot;,samplerdatastringPre);
+</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BSS: get response data" enabled="false">
+          <stringProp name="BeanShellSampler.query">byte [] samplerdata = ctx.getPreviousResult().getResponseData();
+String samplerdatastring = new String(samplerdata);
+vars.put(&quot;samplerdata&quot;,samplerdatastring);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BSS: if (id % 3)==0" enabled="false">
+          <stringProp name="BeanShellSampler.query">Integer id = new Integer(vars.get(&quot;id_#&quot;));
+//id = vars.get(&quot;id_#&quot;);
+if((id % 3) == 0 )	{
+	String result = new String(&quot;data == 0&quot;);
+	vars.put(&quot;result&quot;, result);
+          	
+} 	else	{
+		String result = new String(&quot;data != 0&quot;);
+	vars.put(&quot;result&quot;, result);
+	
+}
+          </stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BSS: create file, write, close" enabled="false">
+          <stringProp name="BeanShellSampler.query">File fOut = new File(&quot;fileOut.txt&quot;);
+FileWriter  pw = new FileWriter(fOut);
+pw.write(&quot;line&quot;);
+pw.close();</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BSS: jmeter variables" enabled="false">
+          <stringProp name="BeanShellSampler.query">String data = new String(&quot;qweqwe&quot;);
+vars.put(&quot;data&quot;,data);
+          </stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

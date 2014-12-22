@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11 r1554548">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <org.plab.jsp.key.keystore.ConfigKeyElement guiclass="org.plab.jsp.key.keystore.JspGetKeyGUI" testclass="org.plab.jsp.key.keystore.ConfigKeyElement" testname="GetKey" enabled="true">
+        <stringProp name="KeyConfigElement.alias">NSI</stringProp>
+        <stringProp name="KeyConfigElement.pass"></stringProp>
+        <stringProp name="KeyConfigElement.path">A:\</stringProp>
+      </org.plab.jsp.key.keystore.ConfigKeyElement>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="URL" elementType="Argument">
+            <stringProp name="Argument.name">URL</stringProp>
+            <stringProp name="Argument.value">http://31.13.60.155:8080/SignedNSIGetDataService/signedNSIGetDataService</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="user" elementType="Argument">
+            <stringProp name="Argument.name">user</stringProp>
+            <stringProp name="Argument.value">PFBL</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="pass" elementType="Argument">
+            <stringProp name="Argument.name">pass</stringProp>
+            <stringProp name="Argument.value">Pq34Y78+</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1411391456000</longProp>
+        <longProp name="ThreadGroup.end_time">1411391456000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <org.plab.jsp.key.JspSamplerProxy guiclass="org.plab.jsp.key.SoapSamplerSignGui" testclass="org.plab.jsp.key.JspSamplerProxy" testname="getCatalogList 2" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SoapSampler.URL_DATA">${URL}</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;nsi:getCatalogList&gt;
+&lt;auth&gt;
+&lt;company&gt;asur_nsi&lt;/company&gt;
+&lt;password&gt;${pass}&lt;/password&gt;
+&lt;user&gt;${user}&lt;/user&gt;
+&lt;/auth&gt;
+&lt;/nsi:getCatalogList&gt;</stringProp>
+          <stringProp name="SoapSampler.SOAP_ACTION">getCatalogList</stringProp>
+          <stringProp name="SoapSampler.SEND_SOAP_ACTION">true</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <stringProp name="SoapSampler.key">GetKey</stringProp>
+          <stringProp name="SoapSampler.keyImplementation">xmldsig-more#gostr34102001-gostr3411</stringProp>
+          <boolProp name="SoapSampler.body">true</boolProp>
+          <stringProp name="SoapSampler.anchor">RSMEVAUTH</stringProp>
+          <elementProp name="SoapSampler.blocks" elementType="org.plab.jsp.key.util.SignPartArgs">
+            <collectionProp name="SignPartArgs.parts">
+              <elementProp name="body" elementType="org.plab.jsp.key.util.SignPartArg">
+                <stringProp name="sign.block_id">body</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="SoapSampler.cert">SenderCertificate</stringProp>
+          <stringProp name="SoapSampler.headers">xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;
+xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;
+xmlns:nsi=&quot;http://nsi.asur.mos.ru/&quot;</stringProp>
+        </org.plab.jsp.key.JspSamplerProxy>
+        <hashTree/>
+        <org.plab.jsp.key.JspSamplerProxy guiclass="org.plab.jsp.key.SoapSamplerSignGui" testclass="org.plab.jsp.key.JspSamplerProxy" testname="getCatalogSpec 4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SoapSampler.URL_DATA">${URL}</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;nsi:getCatalogSpec&gt;
+&lt;auth&gt;
+&lt;company&gt;asur_nsi&lt;/company&gt;
+&lt;password&gt;${pass}&lt;/password&gt;
+&lt;user&gt;${user}&lt;/user&gt;
+&lt;/auth&gt;
+&lt;idCatalog&gt;20627&lt;/idCatalog&gt;
+&lt;/nsi:getCatalogSpec&gt;</stringProp>
+          <stringProp name="SoapSampler.SOAP_ACTION">getCatalogSpec</stringProp>
+          <stringProp name="SoapSampler.SEND_SOAP_ACTION">true</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <stringProp name="SoapSampler.key">GetKey</stringProp>
+          <stringProp name="SoapSampler.keyImplementation">xmldsig-more#gostr34102001-gostr3411</stringProp>
+          <boolProp name="SoapSampler.body">true</boolProp>
+          <stringProp name="SoapSampler.anchor">RSMEVAUTH</stringProp>
+          <elementProp name="SoapSampler.blocks" elementType="org.plab.jsp.key.util.SignPartArgs">
+            <collectionProp name="SignPartArgs.parts">
+              <elementProp name="body" elementType="org.plab.jsp.key.util.SignPartArg">
+                <stringProp name="sign.block_id">body</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="SoapSampler.cert">SenderCertificate</stringProp>
+          <stringProp name="SoapSampler.headers">xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;
+xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;
+xmlns:nsi=&quot;http://nsi.asur.mos.ru/&quot;</stringProp>
+        </org.plab.jsp.key.JspSamplerProxy>
+        <hashTree/>
+        <org.plab.jsp.key.JspSamplerProxy guiclass="org.plab.jsp.key.SoapSamplerSignGui" testclass="org.plab.jsp.key.JspSamplerProxy" testname="getCategories 7" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SoapSampler.URL_DATA">${URL}</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;nsi:getCategories&gt;
+&lt;auth&gt;
+&lt;company&gt;asur_nsi&lt;/company&gt;
+&lt;password&gt;${pass}&lt;/password&gt;
+&lt;user&gt;${user}&lt;/user&gt;
+&lt;/auth&gt;
+&lt;versionDate/&gt;
+&lt;idHierarchy&gt;20825&lt;/idHierarchy&gt;
+&lt;Attributes/&gt;
+&lt;AttrSort/&gt;
+&lt;SortType/&gt;
+&lt;Start&gt;0&lt;/Start&gt;
+&lt;End&gt;0&lt;/End&gt;
+&lt;/nsi:getCategories&gt;</stringProp>
+          <stringProp name="SoapSampler.SOAP_ACTION">getCategories</stringProp>
+          <stringProp name="SoapSampler.SEND_SOAP_ACTION">true</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <stringProp name="SoapSampler.key">GetKey</stringProp>
+          <stringProp name="SoapSampler.keyImplementation">xmldsig-more#gostr34102001-gostr3411</stringProp>
+          <boolProp name="SoapSampler.body">true</boolProp>
+          <stringProp name="SoapSampler.anchor">RSMEVAUTH</stringProp>
+          <elementProp name="SoapSampler.blocks" elementType="org.plab.jsp.key.util.SignPartArgs">
+            <collectionProp name="SignPartArgs.parts">
+              <elementProp name="body" elementType="org.plab.jsp.key.util.SignPartArg">
+                <stringProp name="sign.block_id">body</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="SoapSampler.cert">SenderCertificate</stringProp>
+          <stringProp name="SoapSampler.headers">xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;
+xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;
+xmlns:nsi=&quot;http://nsi.asur.mos.ru/&quot;</stringProp>
+        </org.plab.jsp.key.JspSamplerProxy>
+        <hashTree/>
+        <org.plab.jsp.key.JspSamplerProxy guiclass="org.plab.jsp.key.SoapSamplerSignGui" testclass="org.plab.jsp.key.JspSamplerProxy" testname="getCatalogItemsByAttrValue 10" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SoapSampler.URL_DATA">${URL}</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;nsi:getCatalogItemsByAttrValue&gt;
+&lt;auth&gt;
+&lt;company&gt;asur_nsi&lt;/company&gt;
+&lt;password&gt;${pass}&lt;/password&gt;
+&lt;user&gt;${user}&lt;/user&gt;
+&lt;/auth&gt;
+&lt;versionDate/&gt;
+&lt;idCatalog&gt;20627&lt;/idCatalog&gt;
+&lt;attrName&gt;ObjCode&lt;/attrName&gt;
+&lt;attrValue xsi:type=&quot;xsd:string&quot;&gt;0566&lt;/attrValue&gt;
+&lt;Attributes/&gt;
+&lt;AttrSort/&gt;
+&lt;SortType/&gt;
+&lt;/nsi:getCatalogItemsByAttrValue&gt;</stringProp>
+          <stringProp name="SoapSampler.SOAP_ACTION">getCatalogItemsByAttrValue</stringProp>
+          <stringProp name="SoapSampler.SEND_SOAP_ACTION">true</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <stringProp name="SoapSampler.key">GetKey</stringProp>
+          <stringProp name="SoapSampler.keyImplementation">xmldsig-more#gostr34102001-gostr3411</stringProp>
+          <boolProp name="SoapSampler.body">true</boolProp>
+          <stringProp name="SoapSampler.anchor">RSMEVAUTH</stringProp>
+          <elementProp name="SoapSampler.blocks" elementType="org.plab.jsp.key.util.SignPartArgs">
+            <collectionProp name="SignPartArgs.parts">
+              <elementProp name="body" elementType="org.plab.jsp.key.util.SignPartArg">
+                <stringProp name="sign.block_id">body</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="SoapSampler.cert">SenderCertificate</stringProp>
+          <stringProp name="SoapSampler.headers">xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;
+xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;
+xmlns:nsi=&quot;http://nsi.asur.mos.ru/&quot;
+xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</stringProp>
+        </org.plab.jsp.key.JspSamplerProxy>
+        <hashTree/>
+        <org.plab.jsp.key.JspSamplerProxy guiclass="org.plab.jsp.key.SoapSamplerSignGui" testclass="org.plab.jsp.key.JspSamplerProxy" testname="getCatalogItems 9" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="SoapSampler.URL_DATA">${URL}</stringProp>
+          <stringProp name="HTTPSamper.xml_data">&lt;nsi:getCatalogItems&gt;
+&lt;auth&gt;
+&lt;company&gt;asur_nsi&lt;/company&gt;
+&lt;password&gt;${pass}&lt;/password&gt;
+&lt;user&gt;${user}&lt;/user&gt;
+&lt;/auth&gt;
+&lt;versionDate&gt;&lt;/versionDate&gt;
+&lt;idCatalog&gt;24002&lt;/idCatalog&gt;
+&lt;Attributes&gt;&lt;/Attributes&gt;
+&lt;AttrSort&gt;&lt;/AttrSort&gt;
+&lt;SortType&gt;DESC&lt;/SortType&gt;
+&lt;Start&gt;147501&lt;/Start&gt;
+&lt;End&gt;147550&lt;/End&gt;
+&lt;/nsi:getCatalogItems&gt;</stringProp>
+          <stringProp name="SoapSampler.SOAP_ACTION">getCatalogItems</stringProp>
+          <stringProp name="SoapSampler.SEND_SOAP_ACTION">true</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <stringProp name="SoapSampler.key">GetKey</stringProp>
+          <stringProp name="SoapSampler.keyImplementation">xmldsig-more#gostr34102001-gostr3411</stringProp>
+          <boolProp name="SoapSampler.body">true</boolProp>
+          <stringProp name="SoapSampler.anchor">RSMEVAUTH</stringProp>
+          <elementProp name="SoapSampler.blocks" elementType="org.plab.jsp.key.util.SignPartArgs">
+            <collectionProp name="SignPartArgs.parts">
+              <elementProp name="body" elementType="org.plab.jsp.key.util.SignPartArg">
+                <stringProp name="sign.block_id">body</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="SoapSampler.cert">SenderCertificate</stringProp>
+          <stringProp name="SoapSampler.headers">xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;
+xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;
+xmlns:nsi=&quot;http://nsi.asur.mos.ru/&quot;</stringProp>
+        </org.plab.jsp.key.JspSamplerProxy>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">500</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
